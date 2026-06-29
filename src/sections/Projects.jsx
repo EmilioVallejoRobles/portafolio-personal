@@ -1,11 +1,18 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+
+// 🔥 IMPORTACIÓN DE IMÁGENES (CORRECTO PARA VITE + GITHUB PAGES)
+import project1 from "@/assets/project1.png";
+import project2 from "@/assets/project2.png";
+import project3 from "@/assets/project3.png";
+import project4 from "@/assets/project4.png";
+
 const projects = [
   {
     title: "Sistema de Control de Materiales Reciclados",
     description:
       "Sistema web desarrollado para registrar, controlar y administrar materiales reciclados, incluyendo inventario, entradas, salidas y reportes de gestión.",
-    image: "/projects/project1.png",
+    image: project1,
     tags: ["React", "Node.js", "MongoDB"],
     link: "#",
     github: "#",
@@ -14,7 +21,7 @@ const projects = [
     title: "Sistema de Punto de Venta",
     description:
       "Sistema de punto de venta desarrollado para Bar Catrina que permite gestionar ventas, productos, mesas, cortes de caja y generación de reportes para mejorar el control y administración del negocio.",
-    image: "/projects/project2.png",
+    image: project2,
     tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
     link: "#",
     github: "#",
@@ -23,7 +30,7 @@ const projects = [
     title: "SIAR - Sistema Inteligente de Alarmas para Negocios",
     description:
       "Sistema de seguridad basado en tecnología IoT diseñado para la protección de tiendas y pequeños negocios. Integra sensores de movimiento, monitoreo en tiempo real, registro de eventos y alertas automáticas para detectar accesos no autorizados.",
-    image: "/projects/project3.png",
+    image: project3,
     tags: ["IoT", "Arduino", "Node.js", "MongoDB"],
     link: "#",
     github: "#",
@@ -32,7 +39,7 @@ const projects = [
     title: "Aplicación de Control de Inventario",
     description:
       "Sistema para el seguimiento de productos, control de existencias, movimientos de almacén y generación de reportes en tiempo real.",
-    image: "/projects/project4.png",
+    image: project4,
     tags: ["JavaScript", "MongoDB", "Bootstrap"],
     link: "#",
     github: "#",
@@ -42,35 +49,40 @@ const projects = [
 export const Projects = () => {
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
+
       {/* Bg glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+
+        {/* Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span className="text-sm font-medium tracking-wider uppercase">
             Trabajo Destacado
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Proyectos
+
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+            Proyectos{" "}
             <span className="font-serif italic font-normal text-white">
-              {" "}
               De Mayor Impacto.
             </span>
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Explora algunos de mis proyectos más destacados, donde aplico tecnologías modernas para crear soluciones eficientes, escalables y centradas en las necesidades de los usuarios.
+
+          <p className="text-muted-foreground">
+            Explora algunos de mis proyectos más destacados, donde aplico tecnologías modernas para crear soluciones eficientes.
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
+
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+              className="group glass rounded-2xl overflow-hidden"
             >
+
               {/* Image */}
               <div className="relative overflow-hidden aspect-video">
                 <img
@@ -78,23 +90,15 @@ export const Projects = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div
-                  className="absolute inset-0 
-                bg-gradient-to-t from-card via-card/50
-                 to-transparent opacity-60"
-                />
-                {/* Overlay Links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
+
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition">
+                  <a href={project.link} className="p-3 glass rounded-full">
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
-                  <a
-                    href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
+                  <a href={project.github} className="p-3 glass rounded-full">
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
@@ -102,42 +106,39 @@ export const Projects = () => {
 
               {/* Content */}
               <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <ArrowUpRight
-                    className="w-5 h-5 
-                  text-muted-foreground group-hover:text-primary
-                   group-hover:translate-x-1 
-                   group-hover:-translate-y-1 transition-all"
-                  />
-                </div>
+                <h3 className="text-xl font-semibold group-hover:text-primary">
+                  {project.title}
+                </h3>
+
                 <p className="text-muted-foreground text-sm">
                   {project.description}
                 </p>
+
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
+                  {project.tags.map((tag, i) => (
                     <span
-                      key={tagIdx}
-                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
+                      key={i}
+                      className="px-4 py-1.5 rounded-full bg-surface text-xs"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
+
             </div>
           ))}
+
         </div>
 
-        {/* View All CTA */}
-        <div className="text-center mt-12 animate-fade-in animation-delay-500">
+        {/* CTA */}
+        <div className="text-center mt-12">
           <AnimatedBorderButton>
             Ver Todos los Proyectos
             <ArrowUpRight className="w-5 h-5" />
           </AnimatedBorderButton>
         </div>
+
       </div>
     </section>
   );
